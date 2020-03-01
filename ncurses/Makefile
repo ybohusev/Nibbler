@@ -1,10 +1,10 @@
 .PHONY: all, clean, fclean, re
 
-NAME = sfmllib.so
+NAME = nculib.so
 CC = clang++
 
-FLAGS += -Wall -Wextra -Werror -std=c++14
-SFMLFLAGS = -lsfml-graphics -lsfml-window -lsfml-audio
+FLAGS += -std=c++11 -lncurses
+#-Wall -Wextra -Werror
 LIBFLAGS = -shared -fPIC
 
 DIR_S = ./src
@@ -13,7 +13,7 @@ DIR_H = ./inc
 
 SOURCES =
 
-SOURCES += SFML.cpp
+SOURCES += NCULIB.cpp
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 
@@ -22,11 +22,11 @@ OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.cpp=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "Bulid lib"
-	$(CC) $(LIBFLAGS) $(SRCS) -I $(DIR_H) $(FLAGS) $(SFMLFLAGS) -o $(NAME)
+	@echo "Bulid lib NCURSES"
+	$(CC) $(LIBFLAGS) $(SRCS) -I $(DIR_H) $(FLAGS) $(SDLFLAGS) -o $(NAME)
 
 $(DIR_O)/%.o: $(DIR_S)/%.cpp
-	@echo "Compile lib"
+	@echo "Compile lib NCURSES"
 	@mkdir -p $(DIR_O)
 	$(CC) $(FLAGS) -I $(DIR_H) -o $@ -c $<
 

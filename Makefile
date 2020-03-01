@@ -3,16 +3,16 @@
 NAME = Nibbler
 CC = clang++
 
-FLAGS += -Wall -Wextra -Werror -std=c++11
+FLAGS += -Wall -Wextra -Werror -std=c++14
 
 DIR_C = ./core
 DIR_S = $(DIR_C)/src
 DIR_O = $(DIR_C)/obj
 DIR_H = $(DIR_C)/inc
 
-SFML_DIR = ./sfml
+NCUL_DIR = ./sfml
 SDL_DIR = ./sdl
-GTK_DIR = ./gtk
+NCUL_DIR = ./ncurses
 
 SOURCES =
 
@@ -31,12 +31,12 @@ $(NAME): build_libs  $(OBJS)
 	$(CC) $(SRCS) -I $(DIR_H) $(FLAGS) -o $(NAME) -ldl
 
 build_libs:
-	@make -C $(SFML_DIR)
-	@make -C $(SDL_DIR)
-	@make -C $(GTK_DIR)
-	@cp ./sfml/sfmllib.so ./
-	@cp ./sdl/sdllib.so ./
-	@cp ./gtk/gtklib.so ./
+	#@make -C $(SFML_DIR)
+	#@make -C $(SDL_DIR)
+	@make -C $(NCUL_DIR)
+	#@cp ./sfml/sfmllib.so ./
+	#@cp ./sdl/sdllib.so ./
+	@cp ./ncurses/nculib.so ./
 
 
 $(DIR_O)/%.o: $(DIR_S)/%.cpp
@@ -48,18 +48,18 @@ clean:
 	@echo "Clean objective files"
 	@rm -f $(OBJS)
 	@rm -rf $(DIR_O)
-	@make clean -C $(SFML_DIR)
-	@make clean -C $(SDL_DIR)
-	@make clean -C $(GTK_DIR)
+	#@make clean -C $(SFML_DIR)
+	#@make clean -C $(SDL_DIR)
+	@make clean -C $(NCUL_DIR)
 
 fclean: clean
 	@echo "Remove Nibbler"
 	@rm -f $(NAME)
-	@make fclean -C $(SFML_DIR)
-	@make fclean -C $(SDL_DIR)
-	@make fclean -C $(GTK_DIR)
-	@rm -rf sfmllib.so
-	@rm -rf sdllib.so
-	@rm -rf gtklib.so
+	#@make fclean -C $(SFML_DIR)
+	#@make fclean -C $(SDL_DIR)
+	@make fclean -C $(NCUL_DIR)
+	#@rm -rf sfmllib.so
+	#@rm -rf sdllib.so
+	@rm -rf nculib.so
 
 re: fclean all

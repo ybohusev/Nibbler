@@ -1,17 +1,16 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.14)
 project(Nibler)
 
 set(CMAKE_CXX_STANDARD 14)
 
-find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
+#find_package(SFML 2.5 COMPONENTS graphics audio REQUIRED)
 
-find_package(PkgConfig REQUIRED)
+#find_package(PkgConfig REQUIRED)
 
 include_directories(./core/inc
                     ./sfml/inc
                     ./sdl/inc
-                    ./CinLib/inc
-                    .CinLib/Cinder/include/cinder
+                    ./ncurses/inc
                     )
 
 add_executable(Nibler
@@ -25,6 +24,6 @@ add_executable(Nibler
         sfml/src/SFML.cpp
         sdl/src/SDLLIB.cpp
         core/src/Snake.cpp
-        CinLib/src/CINLIB.cpp
-        CinLib/inc/CINLIB.h)
+        ncurses/inc/NCULIB.hpp
+        ncurses/src/NCULIB.cpp)
 target_link_libraries(Nibler sfml-graphics sfml-audio)

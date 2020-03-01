@@ -5,146 +5,129 @@
 		<Option title="Nibler"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib64\;CMake Files\..\..\..\..\..\usr\lib64\cmake\;CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\;"/>
+		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug"/>
+				<Option working_dir="/Users/ybohusev/nibbler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug"/>
+				<Option working_dir="/Users/ybohusev/nibbler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Nibler">
-				<Option output="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Nibler" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./core/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./sfml/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./sdl/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./CinLib/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/.CinLib/Cinder/include/cinder"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nibler"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Nibler/fast">
-				<Option output="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Nibler" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./core/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./sfml/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./sdl/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/./CinLib/inc"/>
-					<Add directory="/home/ybohusev/Programming/Unit/Nibler/.CinLib/Cinder/include/cinder"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/x86_64-pc-linux-gnu"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/c++/9.2.0/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/9.2.0/include-fixed"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nibler/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug"/>
+				<Option working_dir="/Users/ybohusev/nibbler/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/ybohusev/Programming/Unit/Nibler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nibler">
+				<Option output="/Users/ybohusev/nibbler/cmake-build-debug/Nibler" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ybohusev/nibbler/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ybohusev/nibbler/./core/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./sfml/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./sdl/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./ncurses/inc"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nibler"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nibler/fast">
+				<Option output="/Users/ybohusev/nibbler/cmake-build-debug/Nibler" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ybohusev/nibbler/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ybohusev/nibbler/./core/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./sfml/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./sdl/inc"/>
+					<Add directory="/Users/ybohusev/nibbler/./ncurses/inc"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nibler/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ybohusev/nibbler/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/CinLib/inc/CINLIB.h">
+		<Unit filename="/Users/ybohusev/nibbler/core/inc/GUI.h">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/CinLib/src/CINLIB.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/core/inc/Game.h">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/inc/GUI.h">
+		<Unit filename="/Users/ybohusev/nibbler/core/inc/Snake.h">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/inc/Game.h">
+		<Unit filename="/Users/ybohusev/nibbler/core/src/Game.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/inc/Snake.h">
+		<Unit filename="/Users/ybohusev/nibbler/core/src/Snake.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/src/Game.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/core/src/main.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/src/Snake.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/ncurses/inc/NCULIB.hpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/core/src/main.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/ncurses/src/NCULIB.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/sdl/inc/SDLLIB.h">
+		<Unit filename="/Users/ybohusev/nibbler/sdl/inc/SDLLIB.h">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/sdl/src/SDLLIB.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/sdl/src/SDLLIB.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/sfml/inc/SFML.h">
+		<Unit filename="/Users/ybohusev/nibbler/sfml/inc/SFML.h">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/sfml/src/SFML.cpp">
+		<Unit filename="/Users/ybohusev/nibbler/sfml/src/SFML.cpp">
 			<Option target="Nibler"/>
 		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/CMakeLists.txt">
+		<Unit filename="/Users/ybohusev/nibbler/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
-		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/../../../../../usr/lib64/cmake/SFML/SFMLConfig.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
-		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/../../../../../usr/lib64/cmake/SFML/SFMLConfigDependencies.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
-		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/../../../../../usr/lib64/cmake/SFML/SFMLConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
-		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/../../../../../usr/lib64/cmake/SFML/SFMLSharedTargets-release.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
-		</Unit>
-		<Unit filename="/home/ybohusev/Programming/Unit/Nibler/../../../../../usr/lib64/cmake/SFML/SFMLSharedTargets.cmake">
-			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib64\cmake\SFML\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

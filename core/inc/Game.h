@@ -13,7 +13,7 @@ enum class eLibNum
     NONE = 0,
     SFML,
     SDL,
-    GTK
+    NCUL
 };
 
 class Game

@@ -35,6 +35,7 @@ Game::Game(int w, int h)
 
 void Game::init()
 {
+    std::cout << "TEST1" << std::endl;
 	snake1 = new Snake(screen.first, screen.second);
 	snake2 = new Snake(screen.first, screen.second + SNAKE_SIZE * 4);
 	snake1->createSnake(4);
@@ -52,6 +53,7 @@ void Game::init()
 	menuPos = 0;
 	enterPress = false;
 	updateState();
+    std::cout << "TEST2" << std::endl;
 }
 
 void Game::updateState()
@@ -92,7 +94,7 @@ void Game::input()
     else if (key == Keys::KEY_2)
             gui = loadGuiLib(eLibNum::SDL);
     else if (key == Keys::KEY_3)
-            gui = loadGuiLib(eLibNum::GTK);
+            gui = loadGuiLib(eLibNum::NCUL);
 
     if (key == Keys::P)
         onPause = !onPause;
@@ -393,8 +395,9 @@ void Game::wait()
 
 void Game::startGame()
 {
-	gui = loadGuiLib(eLibNum::SFML);
-    std::cout << "start game" << std::endl;
+    std::cout << "TEST3" << std::endl;
+	gui = loadGuiLib(eLibNum::NCUL);
+
 	while (!exit)
     {
         //std::cout << "TEST" << std::endl;
@@ -404,6 +407,7 @@ void Game::startGame()
 		draw();
         wait();
 	}
+
 	delete gui;
 }
 
@@ -475,8 +479,8 @@ GUI* Game::loadGuiLib(eLibNum num)
         case eLibNum::SFML:
             libPath = "./sfmllib.so";
             break;
-        case eLibNum::GTK:
-            libPath = "./gtklib.so";
+        case eLibNum::NCUL:
+            libPath = "./nculib.so";
             break;
         case eLibNum::SDL:
             libPath = "./sdllib.so";
@@ -485,6 +489,7 @@ GUI* Game::loadGuiLib(eLibNum num)
             libPath = "./sfmllib.so";
             break;
     }
+    std::cout << "TEST4" << std::endl;
     if (libHandle)
     {
         delete gui;
@@ -494,13 +499,18 @@ GUI* Game::loadGuiLib(eLibNum num)
             //TODO: exeptions
         }
     }
+    std::cout << "TEST5" << std::endl;
     libHandle = dlopen(libPath.c_str(), RTLD_LAZY);
     void *mkr = dlsym(libHandle, "maker");
     typedef GUI *(*fptr)();
     fptr func = reinterpret_cast<fptr>(reinterpret_cast<long>(mkr));
+    std::cout << "TEST6" << std::endl;
     GUI *tmp = func();
+    std::cout << "TEST7" << std::endl;
     currLib = num;
+    std::cout << "TEST8" << std::endl;
     tmp->init(screen.first, screen.second, state.snakeSize);
+    std::cout << "TEST9" << std::endl;
     return tmp;
 
 }
