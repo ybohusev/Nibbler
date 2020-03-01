@@ -23,8 +23,8 @@ private:
 	std::pair<int, int> fruit;
 	std::pair<int, int> screen;
 	std::vector<std::pair<int, int>> stone;
-	Snake* snake1;
-	Snake* snake2;
+	std::unique_ptr<Snake> snake1;
+	std::unique_ptr<Snake> snake2;
 	GUI* gui;
 	void* libHandle;
 	bool multiPlayer;
@@ -32,6 +32,8 @@ private:
 	bool exit;
 	bool onMenu;
 	bool onPause;
+	bool eatSound;
+	bool endSound;
 	int speed;
 	int menuPos;
 	bool enterPress;

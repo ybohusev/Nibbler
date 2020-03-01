@@ -26,17 +26,14 @@ void SFML::init(int w, int h, int snakeSize)
     screenSize.first = w;
     screenSize.second = h;
 
-	// �������� ���������� ������, ������� ���� SFML � View
 	m_Window.create(sf::VideoMode(screenSize.first, screenSize.second), "Snake SFML", sf::Style::Titlebar|sf::Style::Close);
 	position.x = 100;
 	position.y = 100;
 	m_Window.setPosition(position);
 	m_Window.setFramerateLimit(60);
-	// ��������� ��� � ��������
-	// ����������� ����������� ��� ��� ������ ������ � ���������
+
 	if (!m_BackgroundTexture.loadFromFile("./resources/sfml/background.jpg"))
 		std::cerr << "Error loading background.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
 
 	if (!m_GameOverTexture.loadFromFile("./resources/sfml/background.jpg"))
@@ -51,52 +48,40 @@ void SFML::init(int w, int h, int snakeSize)
 		std::cerr << "Error loading background.jpg" << std::endl;
 	m_MenuSprite.setTexture(m_MenuTexture);
 
-	if (!Font.loadFromFile("./resources/sfml/Pacifico.ttf"))
+	if (!Font.loadFromFile("./resources/sfml/SEASRN__.TTF"))
 		std::cerr << "Error loading Pacifico.ttf" << std::endl;
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_SnakeTexture.loadFromFile("./resources/sfml/body1.jpg", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading snake.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_SnakeSprite.setTexture(m_SnakeTexture);
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_SnakeHeadTexture.loadFromFile("./resources/sfml/head_left.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading bar.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_SnakeHeadSprite.setTexture(m_SnakeHeadTexture);
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_Snake2Texture.loadFromFile("./resources/sfml/body.bmp", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading snake.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_Snake2Sprite.setTexture(m_Snake2Texture);
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_Snake2HeadTexture.loadFromFile("./resources/sfml/head_left.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading bar.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_Snake2HeadSprite.setTexture(m_Snake2HeadTexture);
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_StoneTexture.loadFromFile("./resources/sfml/stone.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading stone.jpg" << std::endl;
-	// ��������� ������ � ��������
 	m_StoneSprite.setTexture(m_StoneTexture);
 
-	// ����������� ����������� ��� ��� ������ ������ � ���������
 	if (!m_FruitTexture.loadFromFile("./resources/sfml/apple.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
 		std::cerr << "Error loading donut.png" << std::endl;
-	// ��������� ������ � ��������
 	m_FruitSprite.setTexture(m_FruitTexture);
 
-//	if (!eatBuffer.loadFromFile("sound.wav"))
-//		std::cerr << "Error loading sound" << std::endl;
-//	eatSound.setBuffer(eatBuffer);
-//
-//	if (!crashBuffer.loadFromFile("sound.wav"))
-//		std::cerr << "Error loading sound" << std::endl;
-//	eatSound.setBuffer(crashBuffer);
+	if (!eatBuffer.loadFromFile("./resources/sfml/apple.wav"))
+		std::cerr << "Error loading apple.wav" << std::endl;
+	eatSound.setBuffer(eatBuffer);
+
+	if (!crashBuffer.loadFromFile("./resources/sfml/crash.wav"))
+		std::cerr << "Error loading crash.wav" << std::endl;
+	crashSound.setBuffer(crashBuffer);
 }
 
 void SFML::drawGameOver(State &state)
@@ -106,7 +91,7 @@ void SFML::drawGameOver(State &state)
 	sf::Text Score1;
 	sf::Text Score2;
 	sf::Text Winner;
-	
+
 	GameOver.setFont(Font);
 	GameOver.setCharacterSize(60);
 	GameOver.setString("Game Over");
@@ -126,8 +111,8 @@ void SFML::drawGameOver(State &state)
 	Score2.setFont(Font);
 	Score2.setCharacterSize(40);
 	Score2.setString("Score 2: " + std::to_string(state.snake2Score));
-	Score2.setPosition(static_cast<sf::Vector2f>(position));	
-	
+	Score2.setPosition(static_cast<sf::Vector2f>(position));
+
 	position.x = screenSize.first / 2 - 40 * 3;
 	position.y = screenSize.second / 2 - 120 + 240;
 	PressEsc.setFont(Font);
@@ -251,7 +236,7 @@ void SFML::drawHead(eDirection &dir, sf::Texture &texture, sf::Sprite &sprite, i
 	{
 	case eDirection::LEFT:
 		if (!texture.loadFromFile("./resources/sfml/head_left.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
-			std::cerr << "Error loading image" << std::endl;	
+			std::cerr << "Error loading image" << std::endl;
 		break;
 	case eDirection::RIGHT:
 		if (!texture.loadFromFile("./resources/sfml/head_right.png", sf::IntRect(0, 0, snakeSize, snakeSize)))
@@ -314,14 +299,28 @@ void SFML::drawStone(const std::vector<std::pair<int, int>> &stone)
 	}
 }
 
+void SFML::playSound(State &state)
+{
+//	if (state.endSound)
+//	{
+//		crashSound.play();
+//		return;
+//	}
+	if (state.eatSound)
+	{
+		eatSound.play();
+	}
+}
+
 void SFML::draw(State &state)
 {
+	playSound(state);
 	if (state.onMenu)
 		drawMenu(state);
-	else if (state.onPause)
-		drawPause(state);
 	else if (state.gameOver)
 		drawGameOver(state);
+	else if (state.onPause)
+		drawPause(state);
 	else
 	{
 		m_Window.clear();
@@ -393,6 +392,7 @@ SFML::~SFML()
 	std::cout << "Call destructor SFML" << std::endl;
 }
 
-SFML *maker() {
-    return new SFML();
+SFML *maker()
+{
+	return new SFML();
 }

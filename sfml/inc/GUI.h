@@ -16,8 +16,8 @@ struct State
 {
     int snakeSize;
 
-    std::vector<std::pair<int, int>> snake1Cord;
-    std::vector<std::pair<int, int>> snake2Cord;
+    std::vector<std::pair<int, int> > snake1Cord;
+    std::vector<std::pair<int, int> > snake2Cord;
 
     int snake1Score;
     int snake2Score;
@@ -26,13 +26,15 @@ struct State
     eDirection snake2Dir;
 
     std::pair<int, int> fruit;
-    std::vector<std::pair<int, int>> stone;
+    std::vector<std::pair<int, int> > stone;
     bool multiPlayer;
     bool gameOver;
     bool exit;
     bool onPause;
     bool onMenu;
-    int speed;
+	bool eatSound;
+	bool endSound;
+	int speed;
     int menuPos;
 };
 
