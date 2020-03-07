@@ -3,7 +3,9 @@
 #include "GUI.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+//
+//#include "sfml/SFML-2.5.0-macOS-clang/include/SFML/Graphics.hpp"
+//#include "sfml/SFML-2.5.0-macOS-clang/include/SFML/Audio.hpp"
 class SFML : public GUI
 {
 private:
@@ -11,7 +13,7 @@ private:
 	//bool f_pause;
 	//bool f_gameOver;
 	//bool f_multiplayer;
-	
+
 	std::pair<int, int> screenSize;
 	sf::Vector2i position;
 
@@ -34,14 +36,14 @@ private:
 	sf::Texture m_Snake2HeadTexture;
 
 	sf::Sprite m_FruitSprite;
-	sf::Texture m_FruitTexture;	
-	
+	sf::Texture m_FruitTexture;
+
 	sf::Sprite m_MenuSprite;
-	sf::Texture m_MenuTexture;	
-	
+	sf::Texture m_MenuTexture;
+
 	sf::Sprite m_GameOverSprite;
-	sf::Texture m_GameOverTexture;	
-	
+	sf::Texture m_GameOverTexture;
+
 	sf::Sprite m_PauseSprite;
 	sf::Texture m_PauseTexture;
 
@@ -50,11 +52,11 @@ private:
 
 	sf::Font Font;
 
-	//sf::SoundBuffer eatBuffer;
-	//sf::Sound eatSound;
+	sf::SoundBuffer eatBuffer;
+	sf::Sound eatSound;
 
-	//sf::SoundBuffer crashBuffer;
-	//sf::Sound crashSound;
+	sf::SoundBuffer crashBuffer;
+	sf::Sound crashSound;
 public:
 	SFML();
 	SFML(SFML const &obj);
@@ -74,6 +76,7 @@ private:
 	void drawMenu(State &state);
 	void drawGameOver(State &state);
 	void drawPause(State &state);
+	void playSound(State &state);
 };
 
 extern "C"

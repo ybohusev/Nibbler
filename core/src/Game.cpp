@@ -21,8 +21,8 @@ Game& Game::operator=(Game const& obj)
 
 Game::~Game()
 {
-	delete snake1;
-	delete snake2;
+//	delete snake1;
+//	delete snake2;
 }
 
 Game::Game(int w, int h)
@@ -35,9 +35,8 @@ Game::Game(int w, int h)
 
 void Game::init()
 {
-    std::cout << "TEST1" << std::endl;
-	snake1 = new Snake(screen.first, screen.second);
-	snake2 = new Snake(screen.first, screen.second + SNAKE_SIZE * 4);
+	snake1 = std::make_unique<Snake>(screen.first, screen.second);
+	snake2 = std::make_unique<Snake>(screen.first, screen.second + SNAKE_SIZE * 4);
 	snake1->createSnake(4);
 	snake2->createSnake(4);
 	srand(static_cast<unsigned int>(time(NULL)));
@@ -52,6 +51,8 @@ void Game::init()
 	onPause = false;
 	menuPos = 0;
 	enterPress = false;
+	eatSound = false;
+	endSound = false;
 	updateState();
     std::cout << "TEST2" << std::endl;
 }
@@ -76,6 +77,8 @@ void Game::updateState()
     state.onPause = onPause;
     state.speed = speed;
     state.menuPos = menuPos;
+    state.eatSound = eatSound;
+    state.endSound = endSound;
 }
 
 void Game::input()
@@ -141,6 +144,7 @@ void Game::checkCordFruit(Snake* snake)
 {
 	if (snake->getCord().at(0).first == fruit.first && snake->getCord().at(0).second == fruit.second)
 	{
+		eatSound = true;
 		snake->setScore(snake->getScore() + 10);
 		createFruit();
 		snake->addToTail();
@@ -153,7 +157,7 @@ void Game::checkCordMap(const int& x, const int& y)
 		|| y >= screen.second || y < 0)
 	{
 		gameOver = true;
-		//std::cout << "GAME OVER!!" << std::endl;
+		endSound = true;
 	}
 }
 
@@ -164,6 +168,7 @@ void Game::checkCordSnake(Snake* snake)
 		if (head.first == it->first && head.second == it->second)
 		{
 			gameOver = true;
+			endSound = true;
 		}
 }
 
@@ -209,6 +214,8 @@ void Game::logic()
 //	std::cout << "Snake x = " << snake1->getCord().at(0).first << ": Snake y = " << snake1->getCord().at(0).second << std::endl;
 //	std::cout << "Snake x = " << snake2->getCord().at(0).first << ": Snake y = " << snake2->getCord().at(0).second << std::endl;
 
+	eatSound = false;
+	endSound = false;
     if (onMenu && enterPress)
     {
         if (menuPos == 0)
@@ -234,21 +241,30 @@ void Game::logic()
     }
     else
     {
-        checkCordFruit(snake1);
+        checkCordFruit(snake1.get());
         checkCordMap(snake1->getCord().at(0).first, snake1->getCord().at(0).second);
-        checkCordSnake(snake1);
+        checkCordSnake(snake1.get());
         if (checkCordStone(snake1->getCord().at(0)))
-            gameOver = true;
+		{
+			gameOver = true;
+			endSound = true;
+		}
         if (multiPlayer) {
-            checkCordFruit(snake2);
+            checkCordFruit(snake2.get());
             checkCordMap(snake2->getCord().at(0).first, snake2->getCord().at(0).second);
-            checkCordSnake(snake2);
+            checkCordSnake(snake2.get());
             checkCordSnakeMulti();
             if (checkCordStone(snake2->getCord().at(0)))
-                gameOver = true;
+			{
+				gameOver = true;
+				endSound = true;
+			}
 
             if (snake1->getCord().at(0) == snake2->getCord().at(0))
-                gameOver = true;
+			{
+				gameOver = true;
+				endSound = true;
+			}
         }
     }
 }
@@ -388,9 +404,7 @@ void Game::wait()
 
 void Game::startGame()
 {
-    std::cout << "TEST3" << std::endl;
-	gui = loadGuiLib(eLibNum::NCUL);
-
+	gui = loadGuiLib(eLibNum::SFML);
 	while (!exit)
     {
         //std::cout << "TEST" << std::endl;
@@ -406,12 +420,12 @@ void Game::startGame()
 
 const Snake* Game::getSnake1() const
 {
-	return snake1;
+	return snake1.get();
 }
 
 const Snake* Game::getSnake2() const
 {
-	return snake2;
+	return snake2.get();
 }
 
 const std::pair<int, int> &Game::getFruit() const
@@ -462,12 +476,11 @@ const std::vector<std::pair<int, int>> &Game::getStone() const
 GUI* Game::loadGuiLib(eLibNum num)
 {
     std::string libPath;
-
     if (num == currLib)
     {
         return gui;
     }
-    switch (num)
+	switch (num)
     {
         case eLibNum::SFML:
             libPath = "./sfmllib.so";
@@ -482,28 +495,23 @@ GUI* Game::loadGuiLib(eLibNum num)
             libPath = "./sfmllib.so";
             break;
     }
-    std::cout << "TEST4" << std::endl;
     if (libHandle)
     {
         delete gui;
         if (dlclose(libHandle))
         {
             std::cerr << dlerror() << std::endl;
-            //TODO: exeptions
         }
     }
-    std::cout << "TEST5" << std::endl;
-    libHandle = dlopen(libPath.c_str(), RTLD_LAZY);
-    void *mkr = dlsym(libHandle, "maker");
+	libHandle = dlopen(libPath.c_str(), RTLD_LAZY | RTLD_GLOBAL);
+	fprintf(stderr,"dlopen() error: %s\n", dlerror());
+	void *mkr = dlsym(libHandle, "maker");
     typedef GUI *(*fptr)();
     fptr func = reinterpret_cast<fptr>(reinterpret_cast<long>(mkr));
-    std::cout << "TEST6" << std::endl;
-    GUI *tmp = func();
-    std::cout << "TEST7" << std::endl;
+	GUI *tmp = func();
     currLib = num;
     std::cout << "TEST8" << std::endl;
     tmp->init(screen.first, screen.second, state.snakeSize);
     std::cout << "TEST9" << std::endl;
     return tmp;
-
 }
