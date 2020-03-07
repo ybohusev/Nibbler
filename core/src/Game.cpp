@@ -78,11 +78,6 @@ void Game::updateState()
     state.menuPos = menuPos;
 }
 
-void Game::setSpeed(int s)
-{
-	speed = s;
-}
-
 void Game::input()
 {
 	Keys key = gui->input();
@@ -154,11 +149,11 @@ void Game::checkCordFruit(Snake* snake)
 
 void Game::checkCordMap(const int& x, const int& y)
 {
-	if (x >= screen.first || x < 0 
+	if (x >= screen.first || x < 0
 		|| y >= screen.second || y < 0)
 	{
 		gameOver = true;
-		std::cout << "GAME OVER!!" << std::endl;
+		//std::cout << "GAME OVER!!" << std::endl;
 	}
 }
 
@@ -166,11 +161,9 @@ void Game::checkCordSnake(Snake* snake)
 {
 	auto head = snake->getCord().at(0);
 	for (auto it = snake->getCord().begin() + 1; it != snake->getCord().end(); it++)
-		if (head.first == it->first
-			&& head.second == it->second)
+		if (head.first == it->first && head.second == it->second)
 		{
 			gameOver = true;
-			std::cout << "GAME OVER!!" << std::endl;
 		}
 }
 

@@ -19,8 +19,6 @@ NCUL& NCUL::operator=(NCUL const& obj)
     return *this;
 }
 
-int c;
-
 void NCUL::init(int w, int h, int snakeSize)
 {
     screenSize.first = h / snakeSize;
@@ -42,13 +40,64 @@ void NCUL::init(int w, int h, int snakeSize)
     init_pair(4, COLOR_CYAN, COLOR_CYAN);
     init_pair(5, COLOR_RED, COLOR_RED);
     init_pair(6, COLOR_WHITE, COLOR_WHITE);
-    init_pair(7, COLOR_BLACK, COLOR_BLUE);
+    init_pair(7, COLOR_BLUE, COLOR_CYAN);
     init_pair(8, COLOR_BLACK, COLOR_RED);
     init_pair(9, COLOR_BLACK, COLOR_CYAN);
-    init_pair(11, COLOR_YELLOW, COLOR_YELLOW);
     init_pair(10, COLOR_MAGENTA, COLOR_BLACK);
-    wbkgd(gameField, COLOR_PAIR(1));
+    init_pair(11, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(12, COLOR_RED, COLOR_CYAN);
+    init_pair(13, COLOR_YELLOW, COLOR_RED);
 
+}
+
+void NCUL::drawMenu(State &state)
+{
+    wbkgd(gameField, COLOR_PAIR(4));
+    wattron(gameField, COLOR_PAIR(7));
+    mvwprintw(gameField, (screenSize.first / 2) - 3, (screenSize.second / 2) - 2, "Play");
+    mvwprintw(gameField, (screenSize.first / 2) - 2, (screenSize.second / 2) - 5, "Multiplayer");
+    mvwprintw(gameField, (screenSize.first / 2) - 1, (screenSize.second / 2) - 2, "Exit");
+
+    wattroff(gameField, COLOR_PAIR(7));
+
+    wattron(gameField, COLOR_PAIR(12));
+    if (state.menuPos == 0)
+        mvwprintw(gameField, (screenSize.first / 2) - 3, (screenSize.second / 2) - 2, "Play");
+    else if (state.menuPos == 1)
+        mvwprintw(gameField, (screenSize.first / 2) - 2, (screenSize.second / 2) - 5, "Multiplayer");
+    else
+        mvwprintw(gameField, (screenSize.first / 2) - 1, (screenSize.second / 2) - 2, "Exit");
+    wattroff(gameField, COLOR_PAIR(12));
+}
+
+void NCUL::drawGameOver(State &state)
+{
+    wbkgd(gameField, COLOR_PAIR(5));
+    wattron(gameField, COLOR_PAIR(13));
+    mvwprintw(gameField, (screenSize.first / 2) - 1, (screenSize.second / 2) - 5, "Game Over");
+    mvwprintw(gameField, (screenSize.first / 2), (screenSize.second / 2) - 9, "Press ESC to exit");
+
+    mvwprintw(gameField, 1, 2, "Score 1: %d", state.snake1Score);
+    if (state.multiPlayer)
+        mvwprintw(gameField, 2, 2, "Score 2: %d", state.snake2Score);
+    wattron(gameField, COLOR_PAIR(13));
+}
+
+void NCUL::drawPause(State &state)
+{
+    wbkgd(gameField, COLOR_PAIR(4));
+
+    wattron(gameField, COLOR_PAIR(7));
+    mvwprintw(gameField, (screenSize.first / 2) - 2, (screenSize.second / 2) - 4, "Continue");
+    mvwprintw(gameField, (screenSize.first / 2) - 1, (screenSize.second / 2) - 2, "Exit");
+    wattroff(gameField, COLOR_PAIR(7));
+
+    wattron(gameField, COLOR_PAIR(12));
+    if (state.menuPos == 0)
+        mvwprintw(gameField, (screenSize.first / 2) - 2, (screenSize.second / 2) - 4, "Continue");
+    else
+        mvwprintw(gameField, (screenSize.first / 2) - 1, (screenSize.second / 2) - 2, "Exit");
+    wattroff(gameField, COLOR_PAIR(12));
 }
 
 void NCUL::drawStone(const std::vector<std::pair<int, int>>& stone)
@@ -56,14 +105,12 @@ void NCUL::drawStone(const std::vector<std::pair<int, int>>& stone)
     wattron(gameField, COLOR_PAIR(2));
     for (auto it = stone.begin(); it != stone.end(); it++)
     {
-        //std::cout << "first = " << it->first << ": second = " << it->second << std::endl;
-        //mvwprintw(gameField, 1, 10, " %d", it->first);
         mvwprintw(gameField, it->second / 25, 2 *it->first / 25, "  ");
     }
     wattroff(gameField, COLOR_PAIR(2));
 }
 
-void NCUL::drawSnake(std::vector<std::pair<int, int>> const &snake, eDirection dir, int player, int snakeSize)
+void NCUL::drawSnake(std::vector<std::pair<int, int>> const &snake, int player)
 {
     if (player == 1)
     {
@@ -106,26 +153,20 @@ void NCUL::draw(State &state)
     getmaxyx(gameField, h, w);
     if (h != screenSize.first || w != screenSize.second)
         wresize(gameField, screenSize.first, screenSize.second);
-
     werase(gameField);
 
-//    if (state.onMenu)
-//        drawMenu(state);
-//    else if (state.onPause)
-//        drawPause(state);
-//    else if (state.gameOver)
-//        drawGameOver(state);
-//    else
+    if (state.onMenu)
+        drawMenu(state);
+    else if (state.onPause)
+        drawPause(state);
+    else if (state.gameOver)
+        drawGameOver(state);
+    else
     {
-        wattron(gameField, COLOR_PAIR(8));
-        mvwprintw(gameField, 1, 1, "RET %d", c);
-        wattroff(gameField, COLOR_PAIR(8));
-        wattron(gameField, COLOR_PAIR(4));
-        wborder(gameField, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
-        wattroff(gameField, COLOR_PAIR(4));
-        drawSnake(state.snake1Cord, state.snake1Dir, 1, state.snakeSize);
-        //if(state.multiPlayer)
-            drawSnake(state.snake2Cord, state.snake2Dir, 2, state.snakeSize);
+        wbkgd(gameField, COLOR_PAIR(1));
+        drawSnake(state.snake1Cord, 1);
+        if(state.multiPlayer)
+            drawSnake(state.snake2Cord, 2);
         drawFruit(state.fruit);
         drawStone(state.stone);
     }
@@ -150,7 +191,7 @@ Keys NCUL::input()
         case KEY_RIGHT:
             ret = Keys::RIGHT;
             break;
-        case 'q':
+        case 10:
             ret = Keys::ENTER;
             break;
         case 'p':
@@ -168,16 +209,18 @@ Keys NCUL::input()
         case 'd':
             ret = Keys::D;
             break;
-//        case KEY_LEFT:
-//            ret = Keys::LEFT;
-//            break;
-//        case KEY_RIGHT:
-//            ret = Keys::RIGHT;
-//            break;
+        case 'q':
+            ret = Keys::Q;
+            break;
+        case 'e':
+            ret = Keys::E;
+            break;
+        case 27:
+            ret = Keys::ESC;
+            break;
         default:
             break;
     }
-    c = key;
     return ret;
 }
 

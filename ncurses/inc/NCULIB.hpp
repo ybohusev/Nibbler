@@ -22,9 +22,12 @@ public:
     void wait(int speed) override;
 
 private:
-    void drawSnake(std::vector<std::pair<int, int>> const &snake, eDirection dir, int player, int snakeSize);
+    void drawSnake(std::vector<std::pair<int, int>> const &snake, int player);
     void drawStone(const std::vector<std::pair<int, int>>& stone);
     void drawFruit(const std::pair<int, int>& fruit);
+    void drawMenu(State &state);
+    void drawGameOver(State &state);
+    void drawPause(State &state);
 };
 
 extern "C"

@@ -31,11 +31,7 @@ $(NAME): build_libs  $(OBJS)
 	$(CC) $(SRCS) -I $(DIR_H) $(FLAGS) -o $(NAME) -ldl
 
 build_libs:
-	#@make -C $(SFML_DIR)
-	#@make -C $(SDL_DIR)
 	@make -C $(NCUL_DIR)
-	#@cp ./sfml/sfmllib.so ./
-	#@cp ./sdl/sdllib.so ./
 	@cp ./ncurses/nculib.so ./
 
 
@@ -48,18 +44,12 @@ clean:
 	@echo "Clean objective files"
 	@rm -f $(OBJS)
 	@rm -rf $(DIR_O)
-	#@make clean -C $(SFML_DIR)
-	#@make clean -C $(SDL_DIR)
 	@make clean -C $(NCUL_DIR)
 
 fclean: clean
 	@echo "Remove Nibbler"
 	@rm -f $(NAME)
-	#@make fclean -C $(SFML_DIR)
-	#@make fclean -C $(SDL_DIR)
 	@make fclean -C $(NCUL_DIR)
-	#@rm -rf sfmllib.so
-	#@rm -rf sdllib.so
 	@rm -rf nculib.so
 
 re: fclean all
