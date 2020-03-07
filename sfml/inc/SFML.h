@@ -3,9 +3,7 @@
 #include "GUI.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-//
-//#include "sfml/SFML-2.5.0-macOS-clang/include/SFML/Graphics.hpp"
-//#include "sfml/SFML-2.5.0-macOS-clang/include/SFML/Audio.hpp"
+
 class SFML : public GUI
 {
 private:

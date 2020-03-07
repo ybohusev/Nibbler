@@ -50,10 +50,10 @@ clean:
 	@echo "Clean objective files"
 	@rm -f $(OBJS)
 	@rm -rf $(DIR_O)
-	@rm -rf $(SFML_DIR)
 
 fclean: clean
 	@echo "Remove lib"
 	@rm -f $(NAME)
+	@rm -rf $(SFML_DIR)
 
 re: fclean all

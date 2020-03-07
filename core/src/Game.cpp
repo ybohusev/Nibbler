@@ -404,7 +404,7 @@ void Game::wait()
 
 void Game::startGame()
 {
-	gui = loadGuiLib(eLibNum::SFML);
+	gui = loadGuiLib(eLibNum::NCUL);
 	while (!exit)
     {
         //std::cout << "TEST" << std::endl;
@@ -510,8 +510,6 @@ GUI* Game::loadGuiLib(eLibNum num)
     fptr func = reinterpret_cast<fptr>(reinterpret_cast<long>(mkr));
 	GUI *tmp = func();
     currLib = num;
-    std::cout << "TEST8" << std::endl;
     tmp->init(screen.first, screen.second, state.snakeSize);
-    std::cout << "TEST9" << std::endl;
     return tmp;
 }

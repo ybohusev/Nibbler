@@ -17,6 +17,7 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   ".././core/inc"
   ".././sfml/inc"
+  ".././sfml/sfml/SFML-2.5.0-macOS-clang/include"
   ".././sdl/inc"
   ".././ncurses/inc"
   )

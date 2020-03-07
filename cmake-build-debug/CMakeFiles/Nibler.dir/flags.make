@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ybohusev/nibbler/./core/inc -I/Users/ybohusev/nibbler/./sfml/inc -I/Users/ybohusev/nibbler/./sdl/inc -I/Users/ybohusev/nibbler/./ncurses/inc 
+CXX_INCLUDES = -I/Users/ybohusev/nibbler/./core/inc -I/Users/ybohusev/nibbler/./sfml/inc -I/Users/ybohusev/nibbler/./sfml/sfml/SFML-2.5.0-macOS-clang/include -I/Users/ybohusev/nibbler/./sdl/inc -I/Users/ybohusev/nibbler/./ncurses/inc 
 

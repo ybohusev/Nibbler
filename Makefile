@@ -10,9 +10,9 @@ DIR_S = $(DIR_C)/src
 DIR_O = $(DIR_C)/obj
 DIR_H = $(DIR_C)/inc
 
-NCUL_DIR = ./sfml
-SDL_DIR = ./sdl
 NCUL_DIR = ./ncurses
+SFML_DIR = ./sfml
+SDL_DIR = ./sdl
 
 SOURCES =
 
@@ -33,6 +33,8 @@ $(NAME): build_libs  $(OBJS)
 build_libs:
 	@make -C $(NCUL_DIR)
 	@cp ./ncurses/nculib.so ./
+	@make -C $(SFML_DIR)
+	@cp ./sfml/sfmllib.so ./
 
 
 $(DIR_O)/%.o: $(DIR_S)/%.cpp
@@ -45,11 +47,14 @@ clean:
 	@rm -f $(OBJS)
 	@rm -rf $(DIR_O)
 	@make clean -C $(NCUL_DIR)
+	@make clean -C $(SFML_DIR)
 
 fclean: clean
 	@echo "Remove Nibbler"
 	@rm -f $(NAME)
 	@make fclean -C $(NCUL_DIR)
+	@make fclean -C $(SFML_DIR)
 	@rm -rf nculib.so
+	@rm -rf sfmllib.so
 
 re: fclean all

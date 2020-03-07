@@ -24,7 +24,8 @@ void NCUL::init(int w, int h, int snakeSize)
     screenSize.first = h / snakeSize;
     screenSize.second = 2 * w / snakeSize;
 
-    initscr();
+    //initscr();
+    newterm(getenv("TERM"), stdout, stdin);
     clear();
     noecho();
     cbreak();
@@ -215,6 +216,15 @@ Keys NCUL::input()
         case 'e':
             ret = Keys::E;
             break;
+        case '1':
+            ret = Keys::KEY_1;
+            break;
+        case '2':
+            ret = Keys::KEY_2;
+            break;
+        case '3':
+            ret = Keys::KEY_3;
+            break;
         case 27:
             ret = Keys::ESC;
             break;
@@ -234,6 +244,7 @@ NCUL::~NCUL()
 
     delwin(gameField);
     endwin();
+    std::cout << "Call destructor ncurses" << std::endl;
 }
 
 NCUL *maker() {

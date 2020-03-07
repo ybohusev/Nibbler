@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(./core/inc
                     ./sfml/inc
+                    ./sfml/sfml/SFML-2.5.0-macOS-clang/include
                     ./sdl/inc
                     ./ncurses/inc
                     )
@@ -26,4 +27,4 @@ add_executable(Nibler
         core/src/Snake.cpp
         ncurses/inc/NCULIB.hpp
         ncurses/src/NCULIB.cpp)
-target_link_libraries(Nibler sfml-graphics sfml-audio)
+#target_link_libraries(Nibler sfml-graphics sfml-audio)

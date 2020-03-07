@@ -387,8 +387,10 @@ void SFML::wait(int speed)
 
 SFML::~SFML()
 {
+
 	m_Window.clear();
 	m_Window.close();
+
 	std::cout << "Call destructor SFML" << std::endl;
 }
 
